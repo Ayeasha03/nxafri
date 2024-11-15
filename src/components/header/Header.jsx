@@ -1,11 +1,13 @@
 import Logo from '/src/assets/images/next.jpg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Badge } from '@mui/icons-material';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
-function Header({ isLoggedIn, setIsLoggedIn, wishlistCount, cartCount, onSearch }) {
+function Header({ isLoggedIn, setIsLoggedIn, cartItems }) {
   const [searchTerm, setSearchTerm] = useState('');
   const [showSearch, setShowSearch] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -70,19 +72,23 @@ function Header({ isLoggedIn, setIsLoggedIn, wishlistCount, cartCount, onSearch 
         <SearchIcon className='cursor-pointer' onClick={() => setShowSearch(!showSearch)} />
         <div className="relative">
           <FavoriteIcon className='cursor-pointer' />
-          {wishlistCount > 0 && (
-            <span className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-2 py-1 text-xs'>
-              {wishlistCount}
-            </span>
-          )}
+          
+            {/*<span className='absolute top-0 right-0 bg-red-500 text-white rounded-full px-2 py-1 text-xs'>
+             
+            </span>*/}
+          
         </div>
         <div className="relative">
+          <Link to='/cart'>
+          
           <ShoppingCartIcon className='cursor-pointer' />
-          {cartCount > 0 && (
-            <span className='absolute top-0 right-0 bg-yellow-500 text-white rounded-full px-2 py-1 text-xs'>
-              {cartCount}
+          
+          </Link>
+          
+            {/*<span className='absolute top-0 right-0 bg-yellow-500 text-white rounded-full px-2 py-1 text-xs'>
+             
             </span>
-          )}
+          */}
         </div>
         <button
           className='bg-yellow-400 hover:bg-yellow-500 text-white px-4 py-2 rounded-lg'

@@ -113,11 +113,9 @@ function FullMarketplace() {
         {items[activeTab] && items[activeTab].map((item) => (
           <div key={item.id} className="bg-white p-4 shadow-lg rounded-lg w-full h-100 overflow-hidden">
             <img src={loadedImages[item.img]} alt={item.name} className="w-full h-80 object-fill rounded-md" />
-            <h3 className="text-lg mt-4">{item.name}</h3>
+            <h3 className="text-lg font-bold mt-4">{item.name}</h3>
             <p className="text-gray-600">{item.price}</p>
-            <button className="mt-4 bg-blue-500 text-white px-4 py-2 rounded">Buy Now</button>
-            <button onClick={() => addToCart(product)}>Add to Cart</button>
-            <button onClick={() => addToWishlist(product)}>Add to Wishlist</button>
+            <button className="mt-4 bg-blue-500 hover:bg-blue-700 text-white px-4 py-2 rounded">Buy Now</button>
           </div>
         ))}
       </div>

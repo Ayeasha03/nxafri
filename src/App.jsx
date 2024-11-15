@@ -7,36 +7,28 @@ import Marketplace from './components/Market/market';
 import FullMarketplace from './pages/fullmarket';
 import Talent from './components/talentList/TalentList';
 import FullTalents from './pages/fulltalentlist';
+import Cart from './CartContext/cart';
+import Checkout from './CartContext/checkout';
+
 import './App.css';
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [wishlistItems, setWishlistItems] = useState([]); // State for wishlist
-  const [cartItems, setCartItems] = useState([]); // State for cart
+  const [cartItems, setCartItems] = useState([]); 
 
-  // Function to add or remove items from wishlist
-  const toggleWishlistItem = (item) => {
-    setWishlistItems((prevWishlist) => {
-      if (prevWishlist.includes(item)) {
-        return prevWishlist.filter((wishlistItem) => wishlistItem !== item); // Remove item if it's already in wishlist
-      }
-      return [...prevWishlist, item]; // Add item to wishlist
-    });
+
+  const handleAddToCart = (item) => {
+    setCartItems((prevItems) => [...prevItems, item]);
   };
 
-  // Function to add items to cart
-  const addToCart = (item) => {
-    setCartItems((prevCart) => [...prevCart, item]);
-  };
-
+  
   return (
     <Router>
       <Header
         isLoggedIn={isLoggedIn}
         setIsLoggedIn={setIsLoggedIn}
-        wishlistCount={wishlistItems.length} // Pass wishlistCount here
-        cartCount={cartItems.length}        // Pass cartCount here
-
+        cartItems={cartItems}
+        
       />
       <Routes>
         <Route
@@ -52,8 +44,7 @@ function App() {
           element={
             isLoggedIn
               ? <Marketplace
-                  toggleWishlistItem={toggleWishlistItem}
-                  addToCart={addToCart}
+                  handleAddToCart={handleAddToCart}
                 />
               : <Navigate to="/" replace />
           }
@@ -71,6 +62,12 @@ function App() {
           element={isLoggedIn ? <FullTalents /> : <Navigate to="/" replace />}
         />
         <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path='/cart' 
+        element={<Cart 
+        cartItems={cartItems}/>} />
+        <Route path='/checkout' 
+        element={<Checkout
+        cartItems={cartItems}/>} />
       </Routes>
     </Router>
   );

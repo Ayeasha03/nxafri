@@ -13,8 +13,8 @@ function Footer() {
    
     return(
         <footer id='footer' className='bg-gray-900 text-gray-300 py-10 px-18'>
-        <div className="max-w-7xl gap-8 mx-auto  grid grid-cols-1 px-6">
-            <div className="flex space-x-28">
+        <div className="max-w-7xl gap-8 mx-auto   grid grid-cols-1 px-6">
+            <div className="flex space-x-28 sm:block ">
               <div className='w-64 pl-10'>
                 <img src={Logo} alt="logo" className="h-20 w-20 rounded-full mb-3" />
                 <h3 className='font-semibold text-lg'>NextGen Africa: Talent unleashed</h3>

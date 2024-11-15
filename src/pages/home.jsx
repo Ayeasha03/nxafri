@@ -6,17 +6,17 @@ import Marketplace from '../components/Market/market';
 import Event from '../components/upcoming/upcoming';
 import Newsletter from '../components/newsList/NewsList';
 import Footer from '../components/Footer/Footer';
-import Login from '../pages/login';
-{/*import { Link } from "react-router-dom";*/}
+import Cart from '../CartContext/cart';
+import Checkout from '../CartContext/checkout';
 
 function Home() {
   return (
     <>
-    <Login />
-    <Header />
     <Hero />
     <Talent />
     <Marketplace />
+    {/*<Cart />
+    <Checkout />*/}
     <Event />
     <Newsletter />
     <Footer />
